@@ -50,6 +50,13 @@
                 <c:if test="${tipoUsuario == 'Profesional'}">
                     <%-- Puedes agregar opciones adicionales o dejar vacío para el tipo de usuario "Profesional" --%>
                 </c:if>
+                <c:if test="${tipoUsuario == 'Admin'}">
+                    <li class="nav-item"><a class="nav-link" href="crear_capacitacion.jsp">Crear Capacitación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="listar_capacitaciones.jsp">Listar Capacitaciones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="crear_usuario.jsp">Crear Usuario</a></li>
+                    <li class="nav-item"><a class="nav-link" href="listar-usuarios">Mostrar Usuario</a></li>
+                    <%-- Agregar todas las opciones del menu para "Admin" --%>
+                </c:if>
 
                 <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
             </ul>

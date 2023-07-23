@@ -1,3 +1,19 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: sofia
+  Date: 19-07-2023
+  Time: 12:08
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%
+    // Verificar si hay una sesión activa y si el tipo de usuario está presente en la sesión
+    String tipoUsuario = (String) request.getSession().getAttribute("tipoUsuario");
+    if (tipoUsuario == null) {
+        // Si no hay una sesión activa o el tipo de usuario no está presente, redirigir al inicio de sesión
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
+    }
+%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -18,8 +34,6 @@
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="menu.jsp">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="Contacto.jsp">Contacto</a></li>
-                <%-- Obtener el tipo de usuario de la sesión --%>
-                <% String tipoUsuario = (String) session.getAttribute("tipoUsuario"); %>
                 <%-- Opciones del menú para el tipo de usuario "Cliente" --%>
                 <c:if test="${tipoUsuario == 'Cliente'}">
                     <li class="nav-item"><a class="nav-link" href="crear_capacitacion.jsp">Crear Capacitación</a></li>
@@ -36,6 +50,13 @@
                 <c:if test="${tipoUsuario == 'Profesional'}">
                     <%-- Puedes agregar opciones adicionales o dejar vacío para el tipo de usuario "Profesional" --%>
                 </c:if>
+                <c:if test="${tipoUsuario == 'Admin'}">
+                    <li class="nav-item"><a class="nav-link" href="crear_capacitacion.jsp">Crear Capacitación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="listar_capacitaciones.jsp">Listar Capacitaciones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="crear_usuario.jsp">Crear Usuario</a></li>
+                    <li class="nav-item"><a class="nav-link" href="listar-usuarios">Mostrar Usuario</a></li>
+                    <%-- Agregar todas las opciones del menu para "Admin" --%>
+                </c:if>
 
                 <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
             </ul>
@@ -49,3 +70,4 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+

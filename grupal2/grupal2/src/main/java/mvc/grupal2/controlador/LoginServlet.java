@@ -18,6 +18,7 @@ public class LoginServlet extends HttpServlet {
 
     static {
         // Agregamos los usuarios válidos y sus claves al HashMap
+        usuariosValidos.put("Admin", "1234");
         usuariosValidos.put("Cliente", "1234");
         usuariosValidos.put("Administrativo", "1234");
         usuariosValidos.put("Profesional", "1234");

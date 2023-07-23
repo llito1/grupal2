@@ -10,6 +10,7 @@ public class GestorUsuarios {
 
     public GestorUsuarios() {
         usuarios = new ArrayList<>();
+        usuarios.add(new Usuario("Admin", "1288888", "1234"));
         usuarios.add(new Usuario("Cliente", "1234567", "1234"));
         usuarios.add(new Usuario("Administrativo", "7654321", "1234"));
         usuarios.add(new Usuario("Profesional", "9876543", "1234"));

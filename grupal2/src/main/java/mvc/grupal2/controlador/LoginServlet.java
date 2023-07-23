@@ -8,17 +8,17 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet(value = "/login")
 public class LoginServlet extends HttpServlet {
-
     // Creamos un HashMap para almacenar los usuarios y claves válidos
     private static final Map<String, String> usuariosValidos = new HashMap<>();
 
     static {
         // Agregamos los usuarios válidos y sus claves al HashMap
+        usuariosValidos.put("Admin", "1234");
         usuariosValidos.put("Cliente", "1234");
         usuariosValidos.put("Administrativo", "1234");
         usuariosValidos.put("Profesional", "1234");
@@ -30,9 +30,8 @@ public class LoginServlet extends HttpServlet {
 
         // Validamos si el usuario y la clave coinciden con los usuarios válidos almacenados
         if (usuariosValidos.containsKey(usuario) && usuariosValidos.get(usuario).equals(clave)) {
-            // Obtenemos la sesión actual o creamos una nueva si no existe
             HttpSession session = request.getSession(true);
-            // Almacenamos el tipo de usuario en la sesión
+            //HttpSession session = request.getSession();
             session.setAttribute("tipoUsuario", usuario);
 
             // Redireccionamos al menú si el inicio de sesión es válido
@@ -43,3 +42,4 @@ public class LoginServlet extends HttpServlet {
         }
     }
 }
+
