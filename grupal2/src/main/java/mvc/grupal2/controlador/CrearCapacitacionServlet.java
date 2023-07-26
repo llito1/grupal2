@@ -15,8 +15,13 @@ import java.util.List;
 @WebServlet("/crear-capacitacion")
 public class CrearCapacitacionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Lógica para mostrar la interfaz de Crear Capacitación
-        request.getRequestDispatcher("crear_capacitacion.jsp").forward(request, response);
+        String tipoUsuario = (String) request.getSession().getAttribute("tipoUsuario");
+        if (tipoUsuario != null && tipoUsuario.equals("Cliente")) {
+            request.getRequestDispatcher("crear_capacitacion.jsp").forward(request, response);
+        } else {
+            // Si el tipo de usuario no es "Cliente", redirigir a una página de error o a otra página de tu elección
+            response.sendRedirect("menu.jsp");
+        }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

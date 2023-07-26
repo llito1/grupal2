@@ -5,6 +5,8 @@
     if (tipoUsuario == null) {
         // Si no hay una sesión activa o el tipo de usuario no está presente, redirigir al inicio de sesión
         response.sendRedirect(request.getContextPath() + "/login.jsp");
+    } else if (!"Administrativo".equals(tipoUsuario)) {
+        response.sendRedirect(request.getContextPath() + "/menu.jsp");
     }
 %>
 <!DOCTYPE html>
